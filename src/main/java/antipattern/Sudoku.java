@@ -106,12 +106,12 @@ public class Sudoku {
         public void update(int row, int col, int value) {
         System.out.println("Cell at row " + row + ", column " + col + " updated to " + value);
         display();
-    }
+        }
 
         public void displayWelcomeMessage() {
         System.out.println("Welcome to Sudoku game!");
         System.out.println("Please enter the board size:");
-    }
+        }
 
     /*
     Cette méthode utilise un objet Scanner pour lire les entrées de l'utilisateur à partir de la console.
@@ -128,7 +128,7 @@ public class Sudoku {
         System.out.println("Enter column number (1-9):");
         coords[1] = scanner.nextInt() - 1; // Convert to 0-based indexing
         return coords;
-    }
+        }
 
     /*
     Cette méthode affiche un message demandant à l'utilisateur d'entrer une valeur entre 1 et 9, puis lit l'entrée
@@ -139,7 +139,7 @@ public class Sudoku {
         Scanner scanner = new Scanner(System.in);
         int value = scanner.nextInt();
         return value;
-    }
+        }
 
         public void displayVictoryMessage() {
         System.out.println("Congratulations, you won the game!");
