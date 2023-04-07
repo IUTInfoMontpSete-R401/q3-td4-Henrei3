@@ -74,6 +74,7 @@ public class SudokuModel {
         }
         return true;
     }
+
     public void registerObserver(SudokuObserver sudokuView){
         observers.add(sudokuView);
     }

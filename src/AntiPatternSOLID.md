@@ -35,14 +35,17 @@ vont être régroupées dans le fichier controller.
 
 Cette architecture va nous permettre de respecter le premier principe
 des 5 SOLID. Single Responsibility Principle. 
-## Comment le "Observeur pattern" est pertinent dans notre application pattern 
-L'observeur pattern est pertinent pour l'actialisation et affichage de notre sudoku. 
+## Comment l'Observator pattern est pertinent dans notre application
+L'observator pattern est pertinent pour l'actualisation et affichage de notre sudoku. 
 Chaque fois qu'on modifie notre sudoku, on devra notifier l'utilisateur. 
-Le pattern de conception Observeur nous permet faire justement ça. 
-On devra simplement faire implementer d'une interface toutes les classes qui sont des observeurs
-de Notre objet a observer. 
+Ce pattern nous permet de faire justement ça. 
+On devra simplement implementer une interface pour toutes les classes
+qui seront observées par notre objet. 
 ## Comment le Command Pattern est pertinent pour notre application 
 Le command pattern nous permet de structurer d'une manière plus logique et orientée envers 
 l'utilisateur à l'application. Chaque fois qu'un utilisateur déclenchera une fonctionalité 
-dans l'application. Une commande devra être la chargée de réaliser ce changement. 
-## Comment 
+dans l'application. Une commande devra être chargée de réaliser ce changement. 
+## Comment le Composite Pattern est pertinent pour notre application 
+Le composite pattern permet de séparer les cells du sudoku. 
+On peut donc théoriquement implémenter le pattern 
+## COmment le Strategy Pattern est pertinent pour notre application 

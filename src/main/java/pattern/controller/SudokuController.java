@@ -3,6 +3,7 @@ package pattern.controller;
 import pattern.model.SudokuModel;
 import pattern.view.SudokuCellView;
 import pattern.view.SudokuComposite;
+import pattern.view.SudokuObserver;
 import pattern.view.SudokuView;
 
 import java.util.Scanner;
@@ -15,12 +16,7 @@ public class SudokuController {
         sudokuView = new SudokuView();
         sudokuView.displayWelcomeMessage();
         sudokuModel = new SudokuModel(askUserForValue());
-        for(int row = 0; row < sudokuModel.getBlockSize(); row++){
-            if(row % sudokuModel.getBlockSize() == 0){
-                SudokuComposite leaf = new SudokuCellView(sudokuModel, row, row + sudokuModel.getBlockSize() - 1);
-                sudokuView.addSudokuComposite(leaf);
-            }
-        }
+
     }
 
     public void handleUserInput(){

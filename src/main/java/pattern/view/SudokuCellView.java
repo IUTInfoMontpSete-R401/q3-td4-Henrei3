@@ -3,18 +3,16 @@ package pattern.view;
 import pattern.model.SudokuModel;
 
 public class SudokuCellView implements SudokuComposite, SudokuObserver {
-
-    private SudokuModel model = null;
-
+    private SudokuComposite sudokuParent;
+    private SudokuModel model;
     private final int rowDebut;
     private final int rowFin;
-
-    public SudokuCellView(SudokuModel cell, int rowDebut,int rowFin){
+    public SudokuCellView(SudokuModel cell,SudokuComposite parent, int rowDebut,int rowFin){
         model = cell;
+        sudokuParent = parent;
         this.rowDebut = rowDebut;
         this.rowFin = rowFin;
     }
-    int [][] cell;
     @Override
     public void display() {
     for(int row = rowDebut; row < rowFin; row++){
@@ -34,8 +32,9 @@ public class SudokuCellView implements SudokuComposite, SudokuObserver {
     }
 
     @Override
-    public void update ( int row, int col, int value){
-        System.out.println("Cell at row " + row + ", column " + col + " updated to " + value);
-        display();
+    public void update (int row, int col, int value){
+        if(rowDebut<=row && row<=rowFin){
+            ((SudokuView)sudokuParent).update(row,col,value);
+        }
     }
 }
