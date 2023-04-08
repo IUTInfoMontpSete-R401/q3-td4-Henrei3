@@ -1,5 +1,7 @@
 package pattern.controller;
 
+import pattern.SetValueCommand;
+import pattern.SudokuCommand;
 import pattern.model.SudokuModel;
 import pattern.view.SudokuCellView;
 import pattern.view.SudokuComposite;
@@ -9,34 +11,41 @@ import pattern.view.SudokuView;
 import java.util.Scanner;
 
 public class SudokuController {
-
+    private SudokuCommand previousCommand;
     private SudokuModel sudokuModel;
     private SudokuView sudokuView;
     public void startGame(){
         sudokuView = new SudokuView();
         sudokuView.displayWelcomeMessage();
-        sudokuModel = new SudokuModel(askUserForValue());
-
+        sudokuModel = new SudokuModel(sudokuView.askUserForValue());
+        sudokuView.addModel(sudokuModel);
+        handleUserInput();
     }
 
     public void handleUserInput(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Que voulez vous faire ? ");
+        System.out.println("Ajouter une Valeur (V)");
+        System.out.println("Undo (U)");
+        System.out.println("Resoudre (R)");
+        while (true){
+            SudokuCommand command = parse(sc.next());
+            previousCommand = command;
+            command.execute();
+        }
+    }
+    public SudokuCommand parse(String command){
+        switch (command){
+            case "V" -> {
+                return new SetValueCommand(sudokuModel);
+            }
+            case "U" -> previousCommand.undo();
 
+            case "R" -> System.out.println("Not Yet Implemented");
+        }
+        return null;
     }
 
-    public int askUserForValue() {
-        System.out.print("Enter value (1-9): ");
-        Scanner scanner = new Scanner(System.in);
-        int value = scanner.nextInt();
-        return value;
-    }
-    public int[] askUserForCoords() {
-        Scanner scanner = new Scanner(System.in);
-        int[] coords = new int[2];
-        System.out.println("Enter row number (1-9):");
-        coords[0] = scanner.nextInt() - 1; // Convert to 0-based indexing
-        System.out.println("Enter column number (1-9):");
-        coords[1] = scanner.nextInt() - 1; // Convert to 0-based indexing
-        return coords;
-    }
+
 
 }

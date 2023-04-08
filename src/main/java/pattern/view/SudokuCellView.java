@@ -15,7 +15,7 @@ public class SudokuCellView implements SudokuComposite, SudokuObserver {
     }
     @Override
     public void display() {
-    for(int row = rowDebut; row < rowFin; row++){
+    for(int row = rowDebut; row <= rowFin; row++){
         for (int col = 0; col < model.getBoardSize(); col++) {
             if (col % model.getBlockSize() == 0) {
                 System.out.print("| ");

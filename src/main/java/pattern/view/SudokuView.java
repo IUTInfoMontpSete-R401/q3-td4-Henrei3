@@ -4,6 +4,7 @@ import pattern.model.SudokuModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class SudokuView implements SudokuComposite,SudokuObserver {
         private final List<SudokuComposite> cellsView= new ArrayList<>();
@@ -49,6 +50,22 @@ public class SudokuView implements SudokuComposite,SudokuObserver {
     }
     public void displayVictoryMessage() {
         System.out.println("Congratulations, you won the game!");
+    }
+
+    public int askUserForValue() {
+        System.out.print("Enter value (1-9): ");
+        Scanner scanner = new Scanner(System.in);
+        int value = scanner.nextInt();
+        return value;
+    }
+    public int[] askUserForCoords() {
+        Scanner scanner = new Scanner(System.in);
+        int[] coords = new int[2];
+        System.out.println("Enter row number (1-9):");
+        coords[0] = scanner.nextInt() - 1; // Convert to 0-based indexing
+        System.out.println("Enter column number (1-9):");
+        coords[1] = scanner.nextInt() - 1; // Convert to 0-based indexing
+        return coords;
     }
 
 }
